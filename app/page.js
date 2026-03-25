@@ -483,6 +483,43 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="border-y border-yellow-500/10 bg-zinc-950/70 py-20 md:py-28">
+  <div className="mx-auto max-w-7xl px-6 md:px-10">
+
+    {/* Heading */}
+    <div className="mx-auto mb-12 max-w-3xl text-center">
+      <h2 className="text-3xl font-black uppercase leading-none tracking-tight text-white md:text-5xl">
+        Proudly Serving <span className="text-yellow-400">The GTA</span>
+      </h2>
+      <p className="mt-4 text-base text-zinc-400 md:text-lg">
+        Our mobile units cover a 100km radius
+      </p>
+    </div>
+
+    {/* City Cards */}
+    <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-4">
+      {[
+        "Hamilton",
+        "Ancaster",
+        "Burlington",
+        "Oakville",
+        "Mississauga",
+        "Waterdown",
+        "Caledonia",
+        "Brantford"
+      ].map((city) => (
+        <div
+          key={city}
+          className="rounded-2xl border border-zinc-800 bg-black p-5 text-center transition hover:border-yellow-500/40 hover:-translate-y-1"
+        >
+          <p className="text-lg font-bold text-white">{city}</p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
         <section id="faq" className="py-20 md:py-28">
           <div className="mx-auto max-w-4xl px-6 md:px-10">
             <div className="mx-auto mb-12 max-w-3xl text-center">
