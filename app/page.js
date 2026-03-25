@@ -552,7 +552,7 @@ export default function Home() {
                 <p className="mb-3 text-xs uppercase tracking-[0.25em] text-yellow-400">Ready to book?</p>
                 <h3 className="text-3xl font-black uppercase leading-none md:text-5xl">Make your vehicle look sharp again.</h3>
                 <p className="mt-5 max-w-xl text-lg text-zinc-400">
-                  Add your booking form, phone number, and service area here. This section is already structured to convert visitors into leads.
+                  Join the hundreds of GTA drivers who trust RS for a flawless, detailed service.
                 </p>
               </div>
 
@@ -592,7 +592,7 @@ export default function Home() {
         <footer className="border-t border-zinc-900 py-8">
           <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 text-sm text-zinc-500 md:flex-row md:px-10">
             <p>© 2026 RS Mobile Detailing. All rights reserved.</p>
-            <p>Premium detailing website concept in a yellow and black performance style.</p>
+            <p>@detailedbyrs on Instagram, Tiktok & Facebook.</p>
           </div>
         </footer>
       </main>
