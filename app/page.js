@@ -483,35 +483,6 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="border-y border-yellow-500/10 bg-zinc-950/70 py-20 md:py-28">
-          <div className="mx-auto max-w-7xl px-6 text-center md:px-10">
-            <div className="mx-auto mb-12 max-w-3xl text-center">
-              <p className="mb-3 text-xs uppercase tracking-[0.25em] text-yellow-400">Built to convert</p>
-              <h2 className="text-3xl font-black uppercase leading-none tracking-tight text-white md:text-5xl">
-                A premium look <span className="text-yellow-400">without overpromising</span>
-              </h2>
-              <p className="mt-4 text-base text-zinc-400 md:text-lg">
-                This structure gives you a serious detailing brand now, with room to add correction and coatings later.
-              </p>
-            </div>
-
-            <div className="mt-12 grid gap-5 text-left md:grid-cols-4">
-              {[
-                { title: "Strong hero section", text: "Immediate trust, premium positioning, and a clean call to action." },
-                { title: "Real service list", text: "Only current services are shown, avoiding fake authority." },
-                { title: "Expectation setting", text: "Water and power requirements are framed professionally." },
-                { title: "Service area ready", text: "Easy to add your city coverage and booking form later." },
-              ].map((item) => (
-                <div key={item.title} className="h-full rounded-3xl border border-zinc-800 bg-black p-6">
-                  <p className="mb-4 text-yellow-400">■</p>
-                  <h3 className="mb-2 text-lg font-black uppercase">{item.title}</h3>
-                  <p className="text-zinc-400">{item.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <section id="faq" className="py-20 md:py-28">
           <div className="mx-auto max-w-4xl px-6 md:px-10">
             <div className="mx-auto mb-12 max-w-3xl text-center">
