@@ -21,7 +21,7 @@ export default function Home() {
       const form = event.currentTarget;
       const formData = new FormData(form);
 
-      const response = await fetch("/api/quote", {
+      const response = await fetch("https://formspree.io/f/mqegzbpg", {
         method: "POST",
         body: formData,
         headers: {
