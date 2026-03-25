@@ -2,6 +2,61 @@
 
 import { useState } from "react";
 
+function BeforeAfterSlider() {
+  const [sliderPosition, setSliderPosition] = useState(50);
+
+  return (
+    <div className="mx-auto max-w-5xl">
+      <div className="relative overflow-hidden rounded-[2rem] border border-yellow-500/20 bg-zinc-950 shadow-2xl shadow-yellow-500/10">
+        <div className="relative aspect-[16/9] w-full overflow-hidden">
+          <img
+            src="/after.jpg"
+            alt="After detailing"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+
+          <div
+            className="absolute inset-y-0 left-0 overflow-hidden"
+            style={{ width: `${sliderPosition}%` }}
+          >
+            <img
+              src="/before.jpg"
+              alt="Before detailing"
+              className="h-full w-full max-w-none object-cover"
+            />
+          </div>
+
+          <div
+            className="absolute inset-y-0 z-20 w-1 bg-yellow-400"
+            style={{ left: `${sliderPosition}%`, transform: "translateX(-50%)" }}
+          >
+            <div className="absolute left-1/2 top-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-4 border-black bg-yellow-400 text-black shadow-lg">
+              ↔
+            </div>
+          </div>
+
+          <div className="absolute left-4 top-4 rounded-full bg-black/70 px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] text-white">
+            Before
+          </div>
+          <div className="absolute right-4 top-4 rounded-full bg-black/70 px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] text-white">
+            After
+          </div>
+        </div>
+
+        <div className="px-6 pb-6 pt-4">
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value={sliderPosition}
+            onChange={(e) => setSliderPosition(Number(e.target.value))}
+            className="w-full accent-yellow-400"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
 export default function Home() {
   const [showQuoteModal, setShowQuoteModal] = useState(false);
   const [quoteSuccess, setQuoteSuccess] = useState(false);
@@ -366,6 +421,21 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <section className="border-y border-yellow-500/10 bg-black py-20 md:py-28">
+  <div className="mx-auto max-w-7xl px-6 md:px-10">
+    <div className="mx-auto mb-12 max-w-3xl text-center">
+      <h2 className="text-3xl font-black uppercase leading-none tracking-tight text-white md:text-5xl">
+        See The <span className="text-yellow-400">Transformation</span>
+      </h2>
+      <p className="mt-4 text-base text-zinc-400 md:text-lg">
+        Drag the line to reveal before & after
+      </p>
+    </div>
+
+    <BeforeAfterSlider />
+  </div>
+</section>
 
         <section id="services" className="border-y border-yellow-500/10 bg-zinc-950/70 py-20 md:py-28">
           <div className="mx-auto max-w-7xl px-6 md:px-10">
