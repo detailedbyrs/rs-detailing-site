@@ -500,59 +500,6 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-20 md:py-28">
-          <div className="mx-auto max-w-7xl px-6 md:px-10">
-            <div className="grid items-stretch gap-8 lg:grid-cols-[1.15fr_0.85fr]">
-              <div className="rounded-[2rem] border border-yellow-500/20 bg-zinc-950 p-8 md:p-10">
-                <p className="mb-4 text-xs uppercase tracking-[0.22em] text-yellow-400">Professional requirements</p>
-                <h3 className="max-w-xl text-3xl font-black uppercase leading-none md:text-5xl">
-                  Everything needed for quality mobile service.
-                </h3>
-                <p className="mt-5 max-w-2xl text-lg leading-relaxed text-zinc-400">
-                  To complete services properly, appointments require access to your outdoor water source and power outlet. It keeps the process efficient, supports the equipment used on-site, and helps maintain a higher-quality final result.
-                </p>
-
-                <div className="mt-8 grid gap-5 sm:grid-cols-2">
-                  <div className="rounded-3xl border border-white/5 bg-black p-6">
-                    <p className="mb-4 text-2xl text-yellow-400">💧</p>
-                    <h4 className="mb-2 text-lg font-black uppercase">Water access</h4>
-                    <p className="text-zinc-400">A standard outdoor hose connection is needed for the appointment.</p>
-                  </div>
-                  <div className="rounded-3xl border border-white/5 bg-black p-6">
-                    <p className="mb-4 text-2xl text-yellow-400">⚡</p>
-                    <h4 className="mb-2 text-lg font-black uppercase">Power access</h4>
-                    <p className="text-zinc-400">A standard exterior outlet is required to power detailing equipment safely.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-col justify-between rounded-[2rem] border border-yellow-500/20 bg-gradient-to-br from-yellow-400 to-yellow-300 p-8 text-black md:p-10">
-                <div>
-                  <p className="mb-4 text-xs uppercase tracking-[0.25em]">Why this works</p>
-                  <h3 className="text-3xl font-black uppercase leading-tight md:text-4xl">
-                    A cleaner, more honest message than pretending to be fully self-contained.
-                  </h3>
-                  <p className="mt-5 text-lg leading-relaxed text-black/75">
-                    The brand stays premium by being straightforward: your service is mobile, professional, and convenient—while the customer provides the water and power access needed for the appointment.
-                  </p>
-                </div>
-                <div className="mt-8 space-y-3">
-                  {[
-                    "More professional than apologizing for needing access",
-                    "Sets expectations before booking",
-                    "Builds trust with clear communication",
-                  ].map((line) => (
-                    <div key={line} className="flex items-start gap-3">
-                      <span className="mt-0.5">★</span>
-                      <span className="font-medium">{line}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         <section className="border-y border-yellow-500/10 bg-zinc-950/70 py-20 md:py-28">
   <div className="mx-auto max-w-7xl px-6 md:px-10">
 
