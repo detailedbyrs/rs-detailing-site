@@ -521,6 +521,7 @@ export default function Home() {
         "Burlington",
         "Oakville",
         "Waterdown",
+        "Mount Hope",
         "Caledonia",
         "Brantford"
       ].map((city) => (
