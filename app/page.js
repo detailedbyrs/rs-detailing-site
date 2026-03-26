@@ -583,7 +583,7 @@ export default function Home() {
                 <div className="rounded-3xl border border-zinc-800 bg-black p-6">
                   <p className="mb-4 text-yellow-400">⌂</p>
                   <p className="mb-2 text-sm uppercase tracking-[0.22em] text-zinc-500">Service Area</p>
-                  <p className="text-xl font-black">Your City + Surrounding Areas</p>
+                  <p className="text-xl font-black">Hamilton + Surrounding Areas</p>
                 </div>
 
                 <div className="mt-2 flex flex-col gap-4 sm:col-span-2 sm:flex-row">
