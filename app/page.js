@@ -509,7 +509,7 @@ export default function Home() {
         Proudly Serving <span className="text-yellow-400">The GTA</span>
       </h2>
       <p className="mt-4 text-base text-zinc-400 md:text-lg">
-        Our mobile units cover a 100km radius
+        Our mobile units will come to you if you are in the following:
       </p>
     </div>
 
@@ -520,7 +520,6 @@ export default function Home() {
         "Ancaster",
         "Burlington",
         "Oakville",
-        "Mississauga",
         "Waterdown",
         "Caledonia",
         "Brantford"
