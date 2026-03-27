@@ -242,8 +242,10 @@ export default function Home() {
               <a href="#contact" className="transition hover:text-yellow-400">Contact</a>
             </nav>
 
-            <a href="#contact" className="rounded-2xl bg-yellow-400 px-6 py-3 text-sm font-bold text-black transition hover:bg-yellow-300">
-              Book Now
+            <a href="/book"
+                className="rounded-2xl bg-yellow-400 px-6 py-3 text-sm font-bold text-black shadow-lg shadow-yellow-400/20 transition hover:bg-yellow-300 hover:scale-105"
+            >
+               Book Now
             </a>
           </div>
 
