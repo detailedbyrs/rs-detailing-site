@@ -76,12 +76,12 @@ export default function BookingPage() {
       formData.set("selected_addons", selectedAddOns.join(", ") || "None");
 
       const response = await fetch("https://formspree.io/f/mqegzbpg", {
-        method: "POST",
-        body: formData,
-        headers: {
+       method: "POST",
+       body: formData,
+       headers: {
           Accept: "application/json",
-        },
-      });
+  },
+});
 
       if (!response.ok) {
         throw new Error("Booking request failed");
