@@ -37,3 +37,21 @@ export async function POST(req) {
     });
   }
 }
+export async function GET() {
+  try {
+    const filePath = path.join(process.cwd(), "bookings.json");
+
+    if (!fs.existsSync(filePath)) {
+      return new Response(JSON.stringify([]), { status: 200 });
+    }
+
+    const file = fs.readFileSync(filePath, "utf-8");
+    const data = JSON.parse(file || "[]");
+
+    return new Response(JSON.stringify(data), {
+      status: 200,
+    });
+  } catch (error) {
+    return new Response(JSON.stringify([]), { status: 500 });
+  }
+}
