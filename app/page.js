@@ -332,7 +332,7 @@ export default function Home() {
                     <div className="mb-5 grid grid-cols-2 gap-4">
                       <div className="rounded-2xl border border-yellow-500/20 bg-black/60 p-4">
                         <p className="mb-2 text-xs uppercase tracking-[0.25em] text-zinc-500">Packages</p>
-                        <p className="text-2xl font-black">3 Core</p>
+                        <p className="text-2xl font-black">Interior / Exterior - Basic or Premium</p>
                       </div>
                       <div className="rounded-2xl border border-yellow-500/20 bg-black/60 p-4">
                         <p className="mb-2 text-xs uppercase tracking-[0.25em] text-zinc-500">Service Style</p>
