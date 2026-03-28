@@ -175,35 +175,73 @@ export default function BookingPage() {
                 </div>
               </div>
 
-              <div>
-                <p className="mb-4 text-xs uppercase tracking-[0.22em] text-yellow-400">3. Service Selection</p>
-                <div className="grid gap-4 md:grid-cols-2">
-                  <div>
-                    <FieldLabel>Main Service</FieldLabel>
-                    <Select
-                      name="service"
-                      value={service}
-                      onChange={(e) => handleServiceChange(e.target.value)}
-                    >
-                      {Object.keys(services).map((item) => (
-                        <option key={item} value={item}>{item}</option>
-                      ))}
-                    </Select>
-                  </div>
-                  <div>
-                    <FieldLabel>Package</FieldLabel>
-                    <Select
-                      name="package_tier"
-                      value={packageTier}
-                      onChange={(e) => setPackageTier(e.target.value)}
-                    >
-                      {serviceOptions.map((item) => (
-                        <option key={item} value={item}>{item}</option>
-                      ))}
-                    </Select>
-                  </div>
-                </div>
-              </div>
+              STE THIS instead:
+<div>
+  <p className="mb-4 text-xs uppercase tracking-[0.22em] text-yellow-400">3. Service Selection</p>
+
+  <div className="grid gap-3 md:grid-cols-3">
+    {Object.keys(services).map((item) => {
+      const active = service === item;
+      return (
+        <button
+          key={item}
+          type="button"
+          onClick={() => handleServiceChange(item)}
+          className={`rounded-2xl border p-5 text-left transition ${
+            active
+              ? "border-yellow-400 bg-yellow-400/10"
+              : "border-zinc-800 bg-black hover:border-yellow-500/30"
+          }`}
+        >
+          <p className="text-lg font-bold text-white">{item}</p>
+          <p className="mt-2 text-sm text-zinc-400">
+            {item === "Interior Detail" && "Deep interior-focused cleaning and reset."}
+            {item === "Exterior Detail" && "Wash, wheels, finish, and exterior presentation."}
+            {item === "Full Detail" && "Inside and out detailing for the full reset."}
+          </p>
+          {active && (
+            <span className="mt-3 inline-block rounded-full bg-yellow-400 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-black">
+              Selected
+            </span>
+          )}
+        </button>
+      );
+    })}
+  </div>
+
+  <div className="mt-4">
+    <FieldLabel>Package</FieldLabel>
+    <div className="grid gap-3 sm:grid-cols-3">
+      {serviceOptions.map((item) => {
+        const active = packageTier === item;
+        return (
+          <button
+            key={item}
+            type="button"
+            onClick={() => setPackageTier(item)}
+            className={`rounded-2xl border px-4 py-3 text-sm font-bold uppercase transition ${
+              active
+                ? "border-yellow-400 bg-yellow-400 text-black"
+                : "border-zinc-800 bg-black text-white hover:border-yellow-500/30"
+            }`}
+          >
+            {item}
+          </button>
+        );
+      })}
+    </div>
+
+    <input type="hidden" name="service" value={service} />
+    <input type="hidden" name="package_tier" value={packageTier} />
+  </div>
+
+  <div className="mt-4 rounded-2xl border border-zinc-800 bg-black p-4">
+    <p className="text-xs uppercase tracking-[0.18em] text-zinc-500">Current Selection</p>
+    <p className="mt-1 text-base font-bold text-white">
+      {service} / {packageTier}
+    </p>
+  </div>
+</div>
 
               <div>
                 <p className="mb-4 text-xs uppercase tracking-[0.22em] text-yellow-400">4. Add-Ons</p>
