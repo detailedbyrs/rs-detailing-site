@@ -5,14 +5,43 @@ import { useState } from "react";
 function BeforeAfterSlider() {
   const [sliderPosition, setSliderPosition] = useState(50);
 
+  const updateSlider = (clientX, rect) => {
+    const x = clientX - rect.left;
+    const percent = (x / rect.width) * 100;
+    setSliderPosition(Math.max(0, Math.min(100, percent)));
+  };
+
+  const handleMouseMove = (e) => {
+    if (e.buttons !== 1) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    updateSlider(e.clientX, rect);
+  };
+
+  const handleClick = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    updateSlider(e.clientX, rect);
+  };
+
+  const handleTouchMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    updateSlider(e.touches[0].clientX, rect);
+  };
+
   return (
     <div className="mx-auto max-w-5xl">
       <div className="relative overflow-hidden rounded-[2rem] border border-yellow-500/20 bg-zinc-950 shadow-2xl shadow-yellow-500/10">
-        <div className="relative aspect-[16/9] w-full overflow-hidden">
+        <div
+          className="relative aspect-[16/9] w-full overflow-hidden cursor-ew-resize select-none touch-none"
+          onMouseMove={handleMouseMove}
+          onClick={handleClick}
+          onTouchMove={handleTouchMove}
+          onTouchStart={handleTouchMove}
+        >
           <img
             src="/after.jpg"
             alt="After detailing"
             className="absolute inset-0 h-full w-full object-cover"
+            draggable="false"
           />
 
           <div
@@ -23,6 +52,7 @@ function BeforeAfterSlider() {
               src="/before.jpg"
               alt="Before detailing"
               className="h-full w-full max-w-none object-cover"
+              draggable="false"
             />
           </div>
 
@@ -42,21 +72,11 @@ function BeforeAfterSlider() {
             After
           </div>
         </div>
-
-        <div className="px-6 pb-6 pt-4">
-          <input
-            type="range"
-            min="0"
-            max="100"
-            value={sliderPosition}
-            onChange={(e) => setSliderPosition(Number(e.target.value))}
-            className="w-full accent-yellow-400"
-          />
-        </div>
       </div>
     </div>
   );
 }
+
 export default function Home() {
   const [showQuoteModal, setShowQuoteModal] = useState(false);
   const [quoteSuccess, setQuoteSuccess] = useState(false);
