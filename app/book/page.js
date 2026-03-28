@@ -12,12 +12,10 @@ const services = {
 
 const addOns = [
   "Pet hair removal",
-  "Seat shampoo",
-  "Carpet shampoo",
-  "Engine bay wipe-down",
+  "Stain Removal",,
+  "Engine bay reset",
   "Odor treatment",
   "Leather conditioning",
-  "Headlight restoration",
   "Salt removal",
 ];
 
