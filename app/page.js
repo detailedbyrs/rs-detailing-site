@@ -135,7 +135,7 @@ export default function Home() {
         {
           name: "Premium",
           price: "From $179",
-          bullets: ["Deep vacuum + blowout", "Full interior detail", "Stain attention", "Detail dressings"],
+          bullets: ["Deep vacuum + blowout", "Everything in Basic", "Carpet + Seat Shampoo", "Leather Conditioning", "Steam Cleaning", "Trim Restoration"],
         },
       ],
     },
@@ -145,7 +145,7 @@ export default function Home() {
         {
           name: "Exterior",
           price: "From $129",
-          bullets: ["Foam wash", "Wheels + tires", "Tire shine", "Gloss finish"],
+          bullets: ["Foam wash", "Wheels + tires", "Tire Dressing", "Clay Bar / Iron Decon", "Trim Restoration"],
           note:
             "Pricing may vary based on vehicle size, condition, and any additional services requested.",
         },
@@ -157,12 +157,12 @@ export default function Home() {
         {
           name: "Basic",
           price: "From $199",
-          bullets: ["Interior + exterior", "Basic clean", "Quick reset"],
+          bullets: ["Interior + exterior Refresh", "Vacuum & Surface Wipedown", "Windows & Wheels", "Perfect for routine Maintenance"],
         },
         {
           name: "Premium",
           price: "From $259",
-          bullets: ["Deep full detail", "Crevice cleaning", "Full finish", "Best results"],
+          bullets: ["Deep full detail", "Crevice cleaning", "Carpet + Seat Shampoo", "Clay Bar", "Iron Decon", "Trim Restoration"],
         },
       ],
     },
