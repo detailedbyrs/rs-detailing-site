@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const vehicleSizes = ["Coupe", "Sedan", "SUV", "Truck", "Van"];
 
@@ -10,14 +10,46 @@ const services = {
   "Full Detail": ["Basic", "Premium"],
 };
 
-const addOns = [
-  "Pet hair removal",
-  "Stain Removal",,
-  "Engine bay reset",
-  "Odor treatment",
-  "Leather conditioning",
-  "Salt removal",
-];
+const addOnsByPackage = {
+  "Interior Detail": {
+    Basic: [
+      "Pet hair removal",
+      "Salt removal",
+      "Odor treatment",
+      "Seat shampoo",
+      "Carpet shampoo",
+      "Leather conditioning",
+    ],
+    Premium: [
+      "Pet hair removal",
+      "Salt removal",
+      "Odor treatment",
+    ],
+  },
+  "Exterior Detail": {
+    Exterior: [
+      "Engine bay reset",
+      "Salt removal",
+    ],
+  },
+  "Full Detail": {
+    Basic: [
+      "Pet hair removal",
+      "Salt removal",
+      "Odor treatment",
+      "Seat shampoo",
+      "Carpet shampoo",
+      "Leather conditioning",
+      "Engine bay reset",
+    ],
+    Premium: [
+      "Pet hair removal",
+      "Salt removal",
+      "Odor treatment",
+      "Engine bay reset",
+    ],
+  },
+};
 
 function FieldLabel({ children }) {
   return <label className="mb-2 block text-sm font-semibold text-white">{children}</label>;
@@ -49,6 +81,14 @@ export default function BookingPage() {
   const [selectedAddOns, setSelectedAddOns] = useState([]);
 
   const serviceOptions = useMemo(() => services[service] || [], [service]);
+  const availableAddOns = useMemo(
+    () => addOnsByPackage[service]?.[packageTier] || [],
+    [service, packageTier]
+  );
+
+  useEffect(() => {
+    setSelectedAddOns((current) => current.filter((item) => availableAddOns.includes(item)));
+  }, [availableAddOns]);
 
   const toggleAddOn = (addOn) => {
     setSelectedAddOns((current) =>
@@ -59,8 +99,15 @@ export default function BookingPage() {
   };
 
   const handleServiceChange = (value) => {
+    const nextPackage = services[value][0];
     setService(value);
-    setPackageTier(services[value][0]);
+    setPackageTier(nextPackage);
+    setSelectedAddOns([]);
+  };
+
+  const handlePackageChange = (value) => {
+    setPackageTier(value);
+    setSelectedAddOns([]);
   };
 
   const handleSubmit = async (event) => {
@@ -74,12 +121,12 @@ export default function BookingPage() {
       formData.set("selected_addons", selectedAddOns.join(", ") || "None");
 
       const response = await fetch("https://formspree.io/f/mqegzbpg", {
-       method: "POST",
-       body: formData,
-       headers: {
+        method: "POST",
+        body: formData,
+        headers: {
           Accept: "application/json",
-  },
-});
+        },
+      });
 
       if (!response.ok) {
         throw new Error("Booking request failed");
@@ -175,78 +222,45 @@ export default function BookingPage() {
                 </div>
               </div>
 
-              STE THIS instead:
-<div>
-  <p className="mb-4 text-xs uppercase tracking-[0.22em] text-yellow-400">3. Service Selection</p>
-
-  <div className="grid gap-3 md:grid-cols-3">
-    {Object.keys(services).map((item) => {
-      const active = service === item;
-      return (
-        <button
-          key={item}
-          type="button"
-          onClick={() => handleServiceChange(item)}
-          className={`rounded-2xl border p-5 text-left transition ${
-            active
-              ? "border-yellow-400 bg-yellow-400/10"
-              : "border-zinc-800 bg-black hover:border-yellow-500/30"
-          }`}
-        >
-          <p className="text-lg font-bold text-white">{item}</p>
-          <p className="mt-2 text-sm text-zinc-400">
-            {item === "Interior Detail" && "Deep interior-focused cleaning and reset."}
-            {item === "Exterior Detail" && "Wash, wheels, finish, and exterior presentation."}
-            {item === "Full Detail" && "Inside and out detailing for the full reset."}
-          </p>
-          {active && (
-            <span className="mt-3 inline-block rounded-full bg-yellow-400 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-black">
-              Selected
-            </span>
-          )}
-        </button>
-      );
-    })}
-  </div>
-
-  <div className="mt-4">
-    <FieldLabel>Package</FieldLabel>
-    <div className="grid gap-3 sm:grid-cols-3">
-      {serviceOptions.map((item) => {
-        const active = packageTier === item;
-        return (
-          <button
-            key={item}
-            type="button"
-            onClick={() => setPackageTier(item)}
-            className={`rounded-2xl border px-4 py-3 text-sm font-bold uppercase transition ${
-              active
-                ? "border-yellow-400 bg-yellow-400 text-black"
-                : "border-zinc-800 bg-black text-white hover:border-yellow-500/30"
-            }`}
-          >
-            {item}
-          </button>
-        );
-      })}
-    </div>
-
-    <input type="hidden" name="service" value={service} />
-    <input type="hidden" name="package_tier" value={packageTier} />
-  </div>
-
-  <div className="mt-4 rounded-2xl border border-zinc-800 bg-black p-4">
-    <p className="text-xs uppercase tracking-[0.18em] text-zinc-500">Current Selection</p>
-    <p className="mt-1 text-base font-bold text-white">
-      {service} / {packageTier}
-    </p>
-  </div>
-</div>
+              <div>
+                <p className="mb-4 text-xs uppercase tracking-[0.22em] text-yellow-400">3. Service Selection</p>
+                <div className="grid gap-4 md:grid-cols-2">
+                  <div>
+                    <FieldLabel>Main Service</FieldLabel>
+                    <Select
+                      name="service"
+                      value={service}
+                      onChange={(e) => handleServiceChange(e.target.value)}
+                    >
+                      {Object.keys(services).map((item) => (
+                        <option key={item} value={item}>{item}</option>
+                      ))}
+                    </Select>
+                  </div>
+                  <div>
+                    <FieldLabel>Package</FieldLabel>
+                    <Select
+                      name="package_tier"
+                      value={packageTier}
+                      onChange={(e) => handlePackageChange(e.target.value)}
+                    >
+                      {serviceOptions.map((item) => (
+                        <option key={item} value={item}>{item}</option>
+                      ))}
+                    </Select>
+                  </div>
+                </div>
+              </div>
 
               <div>
                 <p className="mb-4 text-xs uppercase tracking-[0.22em] text-yellow-400">4. Add-Ons</p>
+                <div className="mb-4 rounded-xl border border-yellow-500/20 bg-black px-4 py-3">
+                  <p className="text-sm text-zinc-300">
+                    Showing add-ons for <span className="font-bold text-white">{service}</span> / <span className="font-bold text-white">{packageTier}</span>
+                  </p>
+                </div>
                 <div className="grid gap-3 sm:grid-cols-2">
-                  {addOns.map((addOn) => {
+                  {availableAddOns.map((addOn) => {
                     const checked = selectedAddOns.includes(addOn);
                     return (
                       <label
@@ -264,6 +278,11 @@ export default function BookingPage() {
                     );
                   })}
                 </div>
+                {!availableAddOns.length && (
+                  <div className="rounded-2xl border border-zinc-800 bg-black px-4 py-4 text-sm text-zinc-400">
+                    No add-ons available for this package.
+                  </div>
+                )}
               </div>
 
               <div>
@@ -278,6 +297,12 @@ export default function BookingPage() {
                     <Input name="preferred_time" type="text" placeholder="Morning / Afternoon" />
                   </div>
                   <div className="md:col-span-2">
+                    <div className="mb-4 rounded-xl border border-yellow-500/30 bg-yellow-400/10 p-3">
+                      <p className="text-xs font-bold uppercase tracking-wide text-yellow-400">Please Note</p>
+                      <p className="text-xs leading-relaxed text-zinc-300">
+                        These times do not guarantee availability. We will work with you to find a date and time that fits your schedule.
+                      </p>
+                    </div>
                     <FieldLabel>Booking Notes</FieldLabel>
                     <textarea
                       name="booking_notes"
@@ -324,7 +349,13 @@ export default function BookingPage() {
                   <p className="text-sm text-zinc-400">Package: {packageTier}</p>
                 </div>
                 <div className="rounded-2xl border border-white/5 bg-black p-4">
-                  <p className="text-xs uppercase tracking-[0.18em] text-zinc-500">Add-Ons</p>
+                  <p className="text-xs uppercase tracking-[0.18em] text-zinc-500">Available Add-Ons</p>
+                  <p className="mt-1 text-sm text-zinc-300">
+                    {availableAddOns.length ? availableAddOns.join(", ") : "No add-ons available for this package."}
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-white/5 bg-black p-4">
+                  <p className="text-xs uppercase tracking-[0.18em] text-zinc-500">Selected Add-Ons</p>
                   <p className="mt-1 text-sm text-zinc-300">
                     {selectedAddOns.length ? selectedAddOns.join(", ") : "No add-ons selected yet."}
                   </p>
@@ -339,7 +370,7 @@ export default function BookingPage() {
                   "Make sure your address and postal code are correct.",
                   "Choose the right vehicle size for accurate quoting.",
                   "Include any heavy soiling, pet hair, or special requests in the notes.",
-                  "Add-ons help us understand the full scope before confirming your booking.",
+                  "Add-ons shown are based on your selected package.",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <span className="mt-0.5">★</span>
