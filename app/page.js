@@ -162,7 +162,7 @@ export default function Home() {
         {
           name: "Premium",
           price: "From $259",
-          bullets: ["Deep full detail", "Crevice cleaning", "Carpet + Seat Shampoo", "Clay Bar", "Iron Decon", "Trim Restoration"],
+          bullets: ["Deep full detail", "Crevice cleaning", "Carpet + Seat Shampoo", "Clay Bar", "Iron Decon", "Trim Restoration", "2+ Month Protector Wax"],
         },
       ],
     },

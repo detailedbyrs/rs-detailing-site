@@ -30,6 +30,7 @@ const addOnsByPackage = {
     Exterior: [
       "Engine bay reset",
       "Salt removal",
+      "2+ Month Protector Wax",
     ],
   },
   "Full Detail": {
@@ -41,6 +42,7 @@ const addOnsByPackage = {
       "Carpet shampoo",
       "Leather conditioning",
       "Engine bay reset",
+      "2+ Month Protector Wax",
     ],
     Premium: [
       "Pet hair removal",
