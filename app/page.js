@@ -451,7 +451,7 @@ export default function Home() {
         See The <span className="text-yellow-400">Transformation</span>
       </h2>
       <p className="mt-4 text-base text-zinc-400 md:text-lg">
-        Drag the line to reveal before & after
+        Drag the line to reveal before & after of an Audi A4 Engine Bay!
       </p>
     </div>
 
