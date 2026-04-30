@@ -5,52 +5,85 @@ import { useEffect, useMemo, useState } from "react";
 const vehicleSizes = ["Coupe", "Sedan", "SUV", "Truck", "Van"];
 
 const services = {
-  "Interior Detail": ["Basic", "Premium"],
-  "Exterior Detail": ["Exterior"],
-  "Full Detail": ["Basic", "Premium"],
+  "Interior Detail": ["Interior Basic", "Interior Premium", "Interior Reset"],
+  "Exterior Detail": ["Exterior Quick Wash", "Exterior Wash & Wax", "Exterior Premium"],
+  "RS Packages": ["RS Refresh", "RS Restore", "RS Elite"],
 };
 
 const addOnsByPackage = {
   "Interior Detail": {
-    Basic: [
-      "Pet hair removal",
-      "Salt removal",
-      "Odor treatment",
-      "Seat shampoo",
-      "Carpet shampoo",
-      "Leather conditioning",
+    "Interior Basic": [
+      "Pet Hair Removal",
+      "Salt Removal",
+      "Odor Treatment",
+      "Seat Shampoo",
+      "Carpet Shampoo",
+      "Leather Conditioning",
     ],
-    Premium: [
-      "Pet hair removal",
-      "Salt removal",
-      "Odor treatment",
+    "Interior Premium": [
+      "Pet Hair Removal",
+      "Salt Removal",
+      "Odor Treatment",
     ],
+    "Interior Reset": [],
   },
   "Exterior Detail": {
-    Exterior: [
-      "Engine bay reset",
-      "Salt removal",
+    "Exterior Quick Wash": [
+      "Engine Bay Reset",
       "2+ Month Protector Wax",
     ],
+    "Exterior Wash & Wax": [
+      "Engine Bay Reset",
+    ],
+    "Exterior Premium": [
+      "Engine Bay Reset",
+    ],
   },
-  "Full Detail": {
-    Basic: [
-      "Pet hair removal",
-      "Salt removal",
-      "Odor treatment",
-      "Seat shampoo",
-      "Carpet shampoo",
-      "Leather conditioning",
-      "Engine bay reset",
+  "RS Packages": {
+    "RS Refresh": [
+      "Pet Hair Removal",
+      "Salt Removal",
+      "Seat Shampoo",
+      "Carpet Shampoo",
+      "Leather Conditioning",
+      "Engine Bay Reset",
       "2+ Month Protector Wax",
     ],
-    Premium: [
-      "Pet hair removal",
-      "Salt removal",
-      "Odor treatment",
-      "Engine bay reset",
+    "RS Restore": [
+      "Engine Bay Reset",
+      "Pet Hair Removal",
+      "Salt Removal",
+    ],
+    "RS Elite": [
+      "Engine Bay Reset",
+      "Pet Hair Removal",
+      "Salt Removal",
     ],
   },
+};
+
+const packageDescriptions = {
+  "Interior Basic": "For cars needing a quick cleanup.",
+  "Interior Premium": "For cars needing deep cleaning and protection.",
+  "Interior Reset": "For cars that need a complete full refresh.",
+  "Exterior Quick Wash": "For regular upkeep and removing light dirt.",
+  "Exterior Wash & Wax": "For cars that need protection and shine.",
+  "Exterior Premium": "The complete exterior package.",
+  "RS Refresh": "Perfect for a quick refresh / maintenance.",
+  "RS Restore": "Everything in Refresh plus premium upgrades.",
+  "RS Elite": "The ultimate package for a pristine vehicle.",
+};
+
+const packagePrices = {
+  "Interior Basic": "Sedan: $80 | SUV/Truck: $110",
+  "Interior Premium": "Sedan: $130 | SUV/Truck: $150",
+  "Interior Reset": "Sedan: $180 | SUV/Truck: $230",
+  "Exterior Quick Wash": "Sedan: $40 | SUV/Truck: $50",
+  "Exterior Wash & Wax": "Sedan: $60 | SUV/Truck: $80",
+  "Exterior Premium": "Sedan: $80 | SUV/Truck: $100",
+  "RS Refresh": "Sedan: $110 | SUV/Truck: $150",
+  "RS Restore": "Sedan: $170 | SUV/Truck: $220",
+  "RS Elite": "Sedan: $250 | SUV/Truck: $300",
 };
 
 function FieldLabel({ children }) {
@@ -79,7 +112,7 @@ export default function BookingPage() {
   const [bookingSuccess, setBookingSuccess] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [service, setService] = useState("Interior Detail");
-  const [packageTier, setPackageTier] = useState("Basic");
+  const [packageTier, setPackageTier] = useState("Interior Basic");
   const [selectedAddOns, setSelectedAddOns] = useState([]);
 
   const serviceOptions = useMemo(() => services[service] || [], [service]);
@@ -121,6 +154,7 @@ export default function BookingPage() {
       const formData = new FormData(form);
       formData.set("booking_type", "Full Booking Request");
       formData.set("selected_addons", selectedAddOns.join(", ") || "None");
+      formData.set("package_price", packagePrices[packageTier] || "");
 
       const response = await fetch("https://formspree.io/f/mqegzbpg", {
         method: "POST",
@@ -137,7 +171,7 @@ export default function BookingPage() {
       form.reset();
       setSelectedAddOns([]);
       setService("Interior Detail");
-      setPackageTier("Basic");
+      setPackageTier("Interior Basic");
       setBookingSuccess(true);
 
       setTimeout(() => {
@@ -252,13 +286,20 @@ export default function BookingPage() {
                     </Select>
                   </div>
                 </div>
+
+                <div className="mt-4 rounded-2xl border border-yellow-500/20 bg-black p-4">
+                  <p className="text-xs uppercase tracking-[0.18em] text-zinc-500">Selected Package</p>
+                  <p className="mt-1 text-lg font-bold text-white">{packageTier}</p>
+                  <p className="mt-1 text-sm text-yellow-400">{packagePrices[packageTier]}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-zinc-400">{packageDescriptions[packageTier]}</p>
+                </div>
               </div>
 
               <div>
                 <p className="mb-4 text-xs uppercase tracking-[0.22em] text-yellow-400">4. Add-Ons</p>
                 <div className="mb-4 rounded-xl border border-yellow-500/20 bg-black px-4 py-3">
                   <p className="text-sm text-zinc-300">
-                    Showing add-ons for <span className="font-bold text-white">{service}</span> / <span className="font-bold text-white">{packageTier}</span>
+                    Showing add-ons for <span className="font-bold text-white">{packageTier}</span>
                   </p>
                 </div>
                 <div className="grid gap-3 sm:grid-cols-2">
@@ -349,12 +390,7 @@ export default function BookingPage() {
                   <p className="text-xs uppercase tracking-[0.18em] text-zinc-500">Selected Service</p>
                   <p className="mt-1 text-lg font-bold text-white">{service}</p>
                   <p className="text-sm text-zinc-400">Package: {packageTier}</p>
-                </div>
-                <div className="rounded-2xl border border-white/5 bg-black p-4">
-                  <p className="text-xs uppercase tracking-[0.18em] text-zinc-500">Available Add-Ons</p>
-                  <p className="mt-1 text-sm text-zinc-300">
-                    {availableAddOns.length ? availableAddOns.join(", ") : "No add-ons available for this package."}
-                  </p>
+                  <p className="mt-1 text-sm font-bold text-yellow-400">{packagePrices[packageTier]}</p>
                 </div>
                 <div className="rounded-2xl border border-white/5 bg-black p-4">
                   <p className="text-xs uppercase tracking-[0.18em] text-zinc-500">Selected Add-Ons</p>
