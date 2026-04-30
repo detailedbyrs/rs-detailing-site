@@ -124,49 +124,119 @@ export default function Home() {
   };
 
   const services = [
-    {
-      title: "Interior Detail",
-      packages: [
-        {
-          name: "Basic",
-          price: "From $129",
-          bullets: ["Vacuum + wipe down", "Dash & console clean", "Glass cleaned"],
-        },
-        {
-          name: "Premium",
-          price: "From $179",
-          bullets: ["Deep vacuum + blowout", "Everything in Basic", "Carpet + Seat Shampoo", "Leather Conditioning", "Steam Cleaning", "Trim Restoration"],
-        },
-      ],
-    },
-    {
-      title: "Exterior Detail",
-      packages: [
-        {
-          name: "Exterior",
-          price: "From $129",
-          bullets: ["Foam wash", "Wheels + tires", "Tire Dressing", "Clay Bar / Iron Decon", "Trim Restoration"],
-          note:
-            "Pricing may vary based on vehicle size, condition, and any additional services requested.",
-        },
-      ],
-    },
-    {
-      title: "Full Detail",
-      packages: [
-        {
-          name: "Basic",
-          price: "From $199",
-          bullets: ["Interior + exterior Refresh", "Vacuum & Surface Wipedown", "Windows & Wheels", "Perfect for routine Maintenance"],
-        },
-        {
-          name: "Premium",
-          price: "From $259",
-          bullets: ["Deep full detail", "Crevice cleaning", "Carpet + Seat Shampoo", "Clay Bar", "Iron Decon", "Trim Restoration", "2+ Month Protector Wax"],
-        },
-      ],
-    },
-  ];
+  {
+    title: "Interior Details",
+    packages: [
+      {
+        name: "Interior Basic",
+        desc: "For cars needing a quick cleanup.",
+        price: "Sedan: $80 | SUV/Truck: $110",
+        bullets: [
+          "Full vacuum",
+          "Door panels cleaned & disinfected",
+          "Console and dash cleaned",
+          "Mats washed/cleaned",
+          "Glass cleaned",
+        ],
+      },
+      {
+        name: "Interior Premium",
+        desc: "For cars needing deep cleaning and protection.",
+        price: "Sedan: $130 | SUV/Truck: $150",
+        bullets: [
+          "Everything in Basic",
+          "Seat shampoo / steaming",
+          "Leather cleaned + protected",
+          "Panels conditioned + protected",
+          "Vents, pedals, and door jambs cleaned",
+        ],
+      },
+      {
+        name: "Interior Reset",
+        desc: "For cars that need a complete full refresh.",
+        price: "Sedan: $180 | SUV/Truck: $230",
+        bullets: [
+          "Everything in Premium",
+          "Salt removal",
+          "Pet hair removal",
+          "Headliner cleaned",
+        ],
+      },
+    ],
+  },
+  {
+    title: "Exterior Details",
+    packages: [
+      {
+        name: "Exterior Quick Wash",
+        desc: "For regular upkeep and removing light dirt.",
+        price: "Sedan: $40 | SUV/Truck: $50",
+        bullets: [
+          "Full pre-rinse",
+          "Foam cannon wash",
+          "Wheels and wheel wells cleaned",
+          "Contact wash",
+          "Hand / blown dry",
+          "Tire dressing",
+        ],
+      },
+      {
+        name: "Exterior Wash & Wax",
+        desc: "For cars that need protection and shine.",
+        price: "Sedan: $60 | SUV/Truck: $80",
+        bullets: [
+          "Everything in Quick Wash",
+          "Paint sealant / wax applied to all panels",
+        ],
+      },
+      {
+        name: "Exterior Premium",
+        desc: "The complete exterior package.",
+        price: "Sedan: $80 | SUV/Truck: $100",
+        bullets: [
+          "Everything in Wash & Wax",
+          "Clay bar decontamination",
+          "Chemical iron decontamination",
+        ],
+      },
+    ],
+  },
+  {
+    title: "RS Packages",
+    packages: [
+      {
+        name: "RS Refresh",
+        desc: "Perfect for a quick refresh / maintenance.",
+        price: "Sedan: $110 | SUV/Truck: $150",
+        bullets: [
+          "Interior Basic",
+          "Exterior Quick Wash",
+          "Great maintenance package",
+        ],
+      },
+      {
+        name: "RS Restore",
+        desc: "Everything in Refresh plus premium upgrades.",
+        price: "Sedan: $170 | SUV/Truck: $220",
+        bullets: [
+          "Interior Premium",
+          "Exterior Wash & Wax",
+          "Deep clean + protection",
+        ],
+      },
+      {
+        name: "RS Elite",
+        desc: "The ultimate package for a pristine vehicle.",
+        price: "Sedan: $250 | SUV/Truck: $300",
+        bullets: [
+          "Interior Reset",
+          "Exterior Premium",
+          "Full transformation package",
+        ],
+      },
+    ],
+  },
+];
 
   const reasons = [
     {
@@ -483,11 +553,15 @@ export default function Home() {
                         className={`rounded-2xl border border-yellow-500/20 bg-zinc-950 p-5 flex flex-col ${service.packages.length === 1 ? "max-w-xs mx-auto" : ""}`}
                       >
                         <div className="mb-3 flex items-center justify-between gap-3">
-                          <p className="text-sm font-bold uppercase text-yellow-400">{pkg.name}</p>
-                          <p className="font-bold text-white">{pkg.price}</p>
-                        </div>
+  <p className="text-sm font-bold uppercase text-yellow-400">{pkg.name}</p>
+  <p className="font-bold text-white">{pkg.price}</p>
+</div>
 
-                        <div className="mb-4 space-y-2">
+<p className="mb-4 text-sm leading-relaxed text-zinc-400">
+  {pkg.desc}
+</p>
+
+<div className="mb-4 space-y-2">
                           {pkg.bullets.map((bullet) => (
                             <div key={bullet} className="flex items-start gap-2 text-sm">
                               <span className="text-yellow-400">✓</span>
