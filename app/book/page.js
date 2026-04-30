@@ -56,8 +56,6 @@ const addOnsByPackage = {
     ],
     "RS Elite": [
       "Engine Bay Reset",
-      "Pet Hair Removal",
-      "Salt Removal",
     ],
   },
 };
