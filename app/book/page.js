@@ -72,12 +72,12 @@ const packageDescriptions = {
 
 const packagePrices = {
   "Interior Basic": "Sedan: $80 | SUV/Truck: $110",
-  "Interior Premium": "Sedan: $130 | SUV/Truck: $150",
+  "Interior Premium": "Sedan: $160 | SUV/Truck: $200",
   "Exterior Quick Wash": "Sedan: $40 | SUV/Truck: $50",
   "Exterior Wash & Wax": "Sedan: $60 | SUV/Truck: $80",
   "Exterior Premium": "Sedan: $80 | SUV/Truck: $100",
   "RS Refresh": "Sedan: $110 | SUV/Truck: $150",
-  "RS Restore": "Sedan: $170 | SUV/Truck: $220",
+  "RS Restore": "Sedan: $200 | SUV/Truck: $250",
   "RS Elite": "Sedan: $250 | SUV/Truck: $300",
 };
 
