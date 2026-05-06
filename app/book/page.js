@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 const vehicleSizes = ["Coupe", "Sedan", "SUV", "Truck", "Van"];
 
 const services = {
-  "Interior Detail": ["Interior Basic", "Interior Premium", "Interior Reset"],
+  "Interior Detail": ["Interior Basic", "Interior Premium"],
   "Exterior Detail": ["Exterior Quick Wash", "Exterior Wash & Wax", "Exterior Premium"],
   "RS Packages": ["RS Refresh", "RS Restore", "RS Elite"],
 };
