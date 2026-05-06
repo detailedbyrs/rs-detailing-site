@@ -403,7 +403,7 @@ export default function BookingPage() {
                   "Make sure your address and postal code are correct.",
                   "Choose the right vehicle size for accurate quoting.",
                   "Include any heavy soiling, pet hair, or special requests in the notes.",
-                  "Add-ons shown are based on your selected package.",
+                  "Add-ons shown are based on your selected package and prices vary on add-ons depending on conditions of the vehicle.",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <span className="mt-0.5">★</span>
