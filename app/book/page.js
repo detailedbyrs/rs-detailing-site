@@ -25,7 +25,6 @@ const addOnsByPackage = {
       "Salt Removal",
       "Odor Treatment",
     ],
-    "Interior Reset": [],
   },
   "Exterior Detail": {
     "Exterior Quick Wash": [

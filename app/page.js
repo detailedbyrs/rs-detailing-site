@@ -142,24 +142,13 @@ export default function Home() {
       {
         name: "Interior Premium",
         desc: "For cars needing deep cleaning and protection.",
-        price: "Sedan: $130 | SUV/Truck: $150",
+        price: "Sedan: $160 | SUV/Truck: $200",
         bullets: [
           "Everything in Basic",
           "Seat shampoo / steaming",
           "Leather cleaned + protected",
           "Panels conditioned + protected",
           "Vents, pedals, and door jambs cleaned",
-        ],
-      },
-      {
-        name: "Interior Reset",
-        desc: "For cars that need a complete full refresh.",
-        price: "Sedan: $180 | SUV/Truck: $230",
-        bullets: [
-          "Everything in Premium",
-          "Salt removal",
-          "Pet hair removal",
-          "Headliner cleaned",
         ],
       },
     ],
@@ -217,7 +206,7 @@ export default function Home() {
       {
         name: "RS Restore",
         desc: "Everything in Refresh plus premium upgrades.",
-        price: "Sedan: $170 | SUV/Truck: $220",
+        price: "Sedan: $200 | SUV/Truck: $250",
         bullets: [
           "Interior Premium",
           "Exterior Wash & Wax",
