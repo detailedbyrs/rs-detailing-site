@@ -62,7 +62,6 @@ const addOnsByPackage = {
 const packageDescriptions = {
   "Interior Basic": "For cars needing a quick cleanup.",
   "Interior Premium": "For cars needing deep cleaning and protection.",
-  "Interior Reset": "For cars that need a complete full refresh.",
   "Exterior Quick Wash": "For regular upkeep and removing light dirt.",
   "Exterior Wash & Wax": "For cars that need protection and shine.",
   "Exterior Premium": "The complete exterior package.",
@@ -74,7 +73,6 @@ const packageDescriptions = {
 const packagePrices = {
   "Interior Basic": "Sedan: $80 | SUV/Truck: $110",
   "Interior Premium": "Sedan: $130 | SUV/Truck: $150",
-  "Interior Reset": "Sedan: $180 | SUV/Truck: $230",
   "Exterior Quick Wash": "Sedan: $40 | SUV/Truck: $50",
   "Exterior Wash & Wax": "Sedan: $60 | SUV/Truck: $80",
   "Exterior Premium": "Sedan: $80 | SUV/Truck: $100",
