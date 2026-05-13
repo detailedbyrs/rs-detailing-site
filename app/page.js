@@ -654,7 +654,7 @@ export default function Home() {
                 <p className="mb-3 text-xs uppercase tracking-[0.25em] text-yellow-400">Ready to book?</p>
                 <h3 className="text-3xl font-black uppercase leading-none md:text-5xl">Make your vehicle look sharp again.</h3>
                 <p className="mt-5 max-w-xl text-lg text-zinc-400">
-                  Join the hundreds of GTA drivers who trust RS for a flawless, detailed service.
+                  Join the GTA drivers who trust RS for a flawless, detailed service.
                 </p>
               </div>
 
